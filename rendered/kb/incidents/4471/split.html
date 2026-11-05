@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_app/immutable/entry/start.BPcehJr-.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DclECHGd.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/CptVIHXj.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/CHfFqfNT.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DQG8lHS1.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.BcIESBgV.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/0.Izv2btRW.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.BDU553EB.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/CjFI1UnD.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DkoUumqI.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/CVBzP17p.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/DcZ9TEUN.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · three problems, not one · support kb</title>
+		<link href="../../../_app/immutable/assets/runbook.COyw0cbZ.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/Callout.AbLv9dM_.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/_page.Csy-CsX1.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>michal-slowikowski</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-11-05 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> holds <strong>412</strong><!----> reports and is marked <em>known: one issue,
+one fix queued</em>. Read by tenant instead of by subject line, it is three problems. The queued parser fix
+closes only the first; the other two keep coming in under the same subjects.</p> <aside class="warn svelte-17bri61"><!---->Do not close #4471 when the parser fix ships. The booking-v3 hint and the one-day move
+have tickets of their own now and need fixes of their own.<!----></aside><!----> <h2>The three problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 (427 rows in the export, 15 exported twice) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>channels</th><th>intake tagged as</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code> shared parser reads day-first dates month first</td><td><strong>374</strong></td><td class="small svelte-1op6c6">app ×202 · email ×147 · form ×25</td><td class="small svelte-1op6c6">parser ×351 · hint ×23</td><td>11</td><td class="small svelte-1op6c6">2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/michal-slowikowski/support-kb-4471/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code> booking-v3 form hint says MM/DD/YYYY</td><td><strong>33</strong></td><td class="small svelte-1op6c6">form ×33</td><td class="small svelte-1op6c6">hint ×18 · parser ×15</td><td>3</td><td class="small svelte-1op6c6">2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/michal-slowikowski/support-kb-4471/issues/2">#2</a><!--]--></td></tr><tr><td><code>shift</code> booking moves by one day (timezone)</td><td><strong>5</strong></td><td class="small svelte-1op6c6">email ×3 · app ×2</td><td class="small svelte-1op6c6">parser ×5</td><td>5</td><td class="small svelte-1op6c6">2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/michal-slowikowski/support-kb-4471/issues/3">#3</a><!--]--></td></tr><!--]--></tbody><tfoot><tr><td>total</td><td><strong>412</strong></td><td colspan="5"></td></tr></tfoot></table><!----> <ol><li><strong>Parser</strong> — <strong>374</strong><!----> reports, <a href="https://github.com/michal-slowikowski/support-kb-4471/issues/1">issue #1</a>.
+The shared parser reads every date month first; every tenant writes the day first. 7 April
+becomes 4 July. Every channel, every tenant.</li> <li><strong>booking-v3 hint</strong> — <strong>33</strong><!----> reports, <a href="https://github.com/michal-slowikowski/support-kb-4471/issues/2">issue #2</a>.
+The booking-v3 form prints <code>MM/DD/YYYY</code> under its date field. People type what it says, and the
+form reads it day first. Same symptom as the parser, but only through the form, only at booking-v3
+tenants, and the parser fix does not touch it.</li> <li><strong>One-day move</strong> — <strong>5</strong><!----> reports, <a href="https://github.com/michal-slowikowski/support-kb-4471/issues/3">issue #3</a>.
+Not a swap at all: Tuesday shows as Monday, “only June”, Lisbon and Toronto get different days. A
+timezone bug. The desk had noted these ids (<code>desk-notes.json</code>) but counted them under the parser.</li></ol> <h2>How the reports were placed</h2> <ul><li>One id, one report: the export repeats some rows (<code>uniqueById</code>).</li> <li>A report’s problem comes from its <strong>tenant</strong> — locale and booking form, <code>src/lib/data/tenants/</code> —
+and its channel, as <code>causes.ts</code> does. Not from <code>intakeTag</code>: intake guesses from the reporter’s
+browser, and the table shows how often that guess is wrong.</li> <li>The one-day moves are the ids in <code>desk-notes.json</code>, taken out of the cause their tenant would give them.</li></ul> <h2>Why one ticket hid three</h2> <p>Decision <a href="/kb/decisions/0001-dedupe-by-subject">0001</a> merges on subject alone, and all three problems
+arrive as “wrong day” subjects. Subject matching found one ticket, so the desk counted one bug.
+Splitting by tenant and channel is what tells them apart.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-EBXP-Y46M</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1eqzvh3 = {
+						base: new URL("../../..", location).pathname.slice(0, -1),
+						version: "1793909057095"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("../../../_app/immutable/entry/start.BPcehJr-.js").then(async (kit) => {
+						kit.init(__sveltekit_1eqzvh3);
+						const app = await import("../../../_app/immutable/entry/app.BcIESBgV.js");
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

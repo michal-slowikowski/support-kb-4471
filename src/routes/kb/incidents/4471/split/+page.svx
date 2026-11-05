@@ -1,0 +1,57 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: michal-slowikowski
+status: open
+reviewed: 2026-11-05
+signature: michal-slowikowski
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import ProblemCount from '#lib/kb/ProblemCount.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/michal-slowikowski/support-kb-4471';
+</script>
+
+[#4471](/kb/incidents/4471) holds <ProblemCount ticket={4471} /> reports and is marked *known: one issue,
+one fix queued*. Read by tenant instead of by subject line, it is three problems. The queued parser fix
+closes only the first; the other two keep coming in under the same subjects.
+
+<Callout kind="warn">
+Do not close #4471 when the parser fix ships. The booking-v3 hint and the one-day move
+have tickets of their own now and need fixes of their own.
+</Callout>
+
+## The three problems
+
+<ProblemTable ticket={4471} {repo} issues={{ parser: 1, hint: 2, shift: 3 }} />
+
+1. **Parser** — <ProblemCount ticket={4471} problem="parser" /> reports, [issue #1]({repo}/issues/1).
+   The shared parser reads every date month first; every tenant writes the day first. 7 April
+   becomes 4 July. Every channel, every tenant.
+2. **booking-v3 hint** — <ProblemCount ticket={4471} problem="hint" /> reports, [issue #2]({repo}/issues/2).
+   The booking-v3 form prints `MM/DD/YYYY` under its date field. People type what it says, and the
+   form reads it day first. Same symptom as the parser, but only through the form, only at booking-v3
+   tenants, and the parser fix does not touch it.
+3. **One-day move** — <ProblemCount ticket={4471} problem="shift" /> reports, [issue #3]({repo}/issues/3).
+   Not a swap at all: Tuesday shows as Monday, "only June", Lisbon and Toronto get different days. A
+   timezone bug. The desk had noted these ids (`desk-notes.json`) but counted them under the parser.
+
+## How the reports were placed
+
+- One id, one report: the export repeats some rows (`uniqueById`).
+- A report's problem comes from its **tenant** — locale and booking form, `src/lib/data/tenants/` —
+  and its channel, as `causes.ts` does. Not from `intakeTag`: intake guesses from the reporter's
+  browser, and the table shows how often that guess is wrong.
+- The one-day moves are the ids in `desk-notes.json`, taken out of the cause their tenant would give them.
+
+## Why one ticket hid three
+
+Decision [0001](/kb/decisions/0001-dedupe-by-subject) merges on subject alone, and all three problems
+arrive as "wrong day" subjects. Subject matching found one ticket, so the desk counted one bug.
+Splitting by tenant and channel is what tells them apart.
+
+<RenderStamp {signature} />
