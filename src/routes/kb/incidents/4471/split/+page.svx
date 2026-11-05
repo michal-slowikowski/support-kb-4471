@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: michal-slowikowski
 status: closed
 reviewed: 2026-11-05
-signature: michal-slowikowski
+signature: 'v1.eyJzdWIiOiIyMDk5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM5MDkyNDEsImV4cCI6MTc5Mzk5NTY0MX0.eNQx4znrdR9cSxkytSPSsoJtZS_TbcsPEQVoGuwtwpQ'
 ---
 
 <script>
