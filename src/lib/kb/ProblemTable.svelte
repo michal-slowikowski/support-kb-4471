@@ -15,6 +15,7 @@
   <strong>{total}</strong> reports merged into #{ticket} ({rows} rows in the export, {rows - total} exported twice) ·
   <strong>{groups.length}</strong> {groups.length === 1 ? 'problem' : 'problems'}
 </p>
+<p class="small">Counted with the desk's view, as exported: each report under the cause its tenant gives it. One-day moves stay counted where they are filed and get their own row and ticket.</p>
 
 <table>
   <thead>
@@ -24,7 +25,7 @@
     {#each groups as g (g.problem)}
       <tr>
         <td><code>{g.problem}</code> {PROBLEMS[g.problem]}</td>
-        <td><strong>{g.reports.length}</strong></td>
+        <td><strong>{g.reports.length}</strong>{#if g.filedUnder}<span class="small"> (in {g.filedUnder})</span>{/if}</td>
         <td class="small">{list(g.channels)}</td>
         <td class="small">{list(g.taggedAs)}</td>
         <td>{g.tenants}</td>
@@ -36,7 +37,7 @@
     {/each}
   </tbody>
   <tfoot>
-    <tr><td>total</td><td><strong>{groups.reduce((n, g) => n + g.reports.length, 0)}</strong></td><td colspan="5"></td></tr>
+    <tr><td>total</td><td><strong>{groups.filter((g) => !g.filedUnder).reduce((n, g) => n + g.reports.length, 0)}</strong></td><td colspan="5"></td></tr>
   </tfoot>
 </table>
 

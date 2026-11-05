@@ -38,7 +38,8 @@ have tickets of their own now and need fixes of their own.
    tenants, and the parser fix does not touch it.
 3. **One-day move** — <ProblemCount ticket={4471} problem="shift" /> reports, [issue #3]({repo}/issues/3).
    Not a swap at all: Tuesday shows as Monday, "only June", Lisbon and Toronto get different days. A
-   timezone bug. The desk had noted these ids (`desk-notes.json`) but counted them under the parser.
+   timezone bug. The desk noted these ids (`desk-notes.json`) and, by tenant, counts them under the
+   parser; they stay in its count above and have a ticket of their own here.
 
 ## How the reports were placed
 
@@ -46,7 +47,8 @@ have tickets of their own now and need fixes of their own.
 - A report's problem comes from its **tenant** — locale and booking form, `src/lib/data/tenants/` —
   and its channel, as `causes.ts` does. Not from `intakeTag`: intake guesses from the reporter's
   browser, and the table shows how often that guess is wrong.
-- The one-day moves are the ids in `desk-notes.json`, taken out of the cause their tenant would give them.
+- The one-day moves are the ids in `desk-notes.json`. As in the desk's view, they stay counted where
+  they are filed (parser), so parser and booking-v3 hint add up to the ticket.
 
 ## Why one ticket hid three
 

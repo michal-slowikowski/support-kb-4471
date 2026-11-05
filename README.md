@@ -40,4 +40,4 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 - Page: `src/routes/kb/incidents/4471/split/+page.svx` (signed `michal-slowikowski`, desk ref `DR-EBXP-Y46M`)
 - Logic: `src/lib/kb/problems.ts`, `ProblemTable.svelte`, `ProblemCount.svelte`
 - Rendered as the desk sees it: `rendered/kb/incidents/4471/split.html` (whole site in `rendered/`; rebuild with `npm install && npm run build`)
-- Tickets: #1 parser (374) · #2 booking-v3 hint (33) · #3 one-day move (5) = 412
+- Tickets: #1 parser (379, incl. the 5 one-day moves) · #2 booking-v3 hint (33) · #3 one-day move (5) = 412
