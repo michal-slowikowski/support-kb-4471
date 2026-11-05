@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · three problems, not one'
 owner: michal-slowikowski
-status: open
+status: closed
 reviewed: 2026-11-05
 signature: michal-slowikowski
 ---
@@ -16,13 +16,23 @@ signature: michal-slowikowski
   const repo = 'https://github.com/michal-slowikowski/support-kb-4471';
 </script>
 
-[#4471](/kb/incidents/4471) holds <ProblemCount ticket={4471} /> reports and is marked *known: one issue,
-one fix queued*. Read by tenant instead of by subject line, it is three problems. The queued parser fix
-closes only the first; the other two keep coming in under the same subjects.
+[#4471](/kb/incidents/4471) holds <ProblemCount ticket={4471} /> reports and was marked *known: one issue,
+one fix queued*. Read by tenant instead of by subject line, it is more than one problem, and they ended
+differently.
+
+## Outcome
+
+Engineering closed #4471 on 5 October 2026:
+
+| problem | ticket | outcome |
+|---|---|---|
+| parser | [#1]({repo}/issues/1) | **fixed** — `fix(dates): parse dd/mm for eu locales` |
+| booking-v3 hint | [#2]({repo}/issues/2) | **won't fix** — the booking-v3 form is retired |
+| one-day move | [#3]({repo}/issues/3) | not in engineering's update; still open |
 
 <Callout kind="warn">
-Do not close #4471 when the parser fix ships. The booking-v3 hint and the one-day move
-have tickets of their own now and need fixes of their own.
+The parser fix does not cover the booking-v3 reports: they stopped because the form was retired,
+not because a fix shipped. If a new form prints a month-first hint, they come back.
 </Callout>
 
 ## The three problems
